@@ -1,0 +1,15 @@
+{
+    "language":
+    {
+       "name" : "language",
+       "key" : "language",
+       "width":"100px",
+        "style":{
+            "color" : "pink"
+        },
+        "data":{
+            "name": " ",
+            "width":"100px"
+        }
+    }
+}
