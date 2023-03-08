@@ -1,0 +1,21 @@
+.tableGrid{
+    width: 65%;
+    border: 1px solid;
+    margin: 5% 5%;
+}
+
+.tableGrid {
+    padding: 20px 30px;
+}
+.columnGrid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+   
+}
+.rowGrid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+.names{
+    text-align: left;
+}
