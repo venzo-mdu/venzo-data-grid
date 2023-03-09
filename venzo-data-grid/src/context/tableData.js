@@ -8,8 +8,9 @@ const columnJson =
             sortable: "true",
             filter: "true",
             fontSize: '20px',
-            fontWeight: '400',
-            fontFamily: 'Poppins'
+            fontWeight: 'bold',
+            fontFamily: 'Poppins',
+            
         },
         {
             title: "Country",
@@ -19,7 +20,7 @@ const columnJson =
             sortable: "true",
             filter: "true",
             fontSize: '20px',
-            fontWeight: '400',
+            fontWeight: 'bold',
             fontFamily: 'Poppins'
         },
         {
@@ -30,18 +31,18 @@ const columnJson =
             sortable: "true",
             filter: "true",
             fontSize: '20px',
-            fontWeight: '400',
+            fontWeight: 'bold',
             fontFamily: 'Poppins'
         },
         {
-            title: "Game",
+            title: "Games",
             key: "game",
             width: "250px",
             className: "clmGame",
             sortable: "true",
             filter: "true",
             fontSize: '20px',
-            fontWeight: '400',
+            fontWeight: 'bold',
             fontFamily: 'Poppins'
         },
         {
@@ -52,7 +53,7 @@ const columnJson =
             sortable: "true",
             filter: "true",
             fontSize: '20px',
-            fontWeight: '400',
+            fontWeight: 'bold',
             fontFamily: 'Poppins'
         }
     ]

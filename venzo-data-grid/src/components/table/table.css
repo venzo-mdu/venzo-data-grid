@@ -4,6 +4,7 @@
     margin: 5% 5%;
     background-color: white;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    /* overflow: scroll; */
 }
 
 .tableGrid {
@@ -13,23 +14,27 @@
     display: flex;
     justify-content: space-evenly;
     gap: 0;
-   
+   border-bottom: 1px solid black;
+}
+.columnGrid:last-child{
+    border-bottom: 0;
 }
 
-/* .clmName{
-    border-right: 1px solid grey;
-} */
 .tableData{
     text-align: left;
-    /* display: flex; */
-    /* justify-content: space-evenly; */
-    /* gap: 0; */
+ 
    
 }
-.rowGridnew {
+.columnGrid {
     display: flex;
 }
-.rowGridnew div{
+.columnGrid div{
     width: 20%;
-    margin:0 0 2% 0;
+    margin:3% 0 2% 0;
+}
+.selectAll{
+    margin: 4% 0 0 0;
+}
+.selectRow{
+    margin: 3% 0 0 0;
 }
