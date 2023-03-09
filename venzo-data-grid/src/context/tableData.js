@@ -16,7 +16,7 @@ const columnJson =
             key: "country",
             width: "250px",
             className: "clmCountry",
-            sortable: "false",
+            sortable: "true",
             filter: "true",
             fontSize: '20px',
             fontWeight: '400',
@@ -27,7 +27,7 @@ const columnJson =
             key: "language",
             width: "250px",
             className: "clmLang",
-            sortable: "false",
+            sortable: "true",
             filter: "true",
             fontSize: '20px',
             fontWeight: '400',
@@ -38,7 +38,7 @@ const columnJson =
             key: "game",
             width: "250px",
             className: "clmGame",
-            sortable: "false",
+            sortable: "true",
             filter: "true",
             fontSize: '20px',
             fontWeight: '400',
@@ -49,7 +49,7 @@ const columnJson =
             key: "medal",
             width: "250px",
             className: "clmMedals",
-            sortable: "false",
+            sortable: "true",
             filter: "true",
             fontSize: '20px',
             fontWeight: '400',
@@ -60,34 +60,26 @@ const columnJson =
 
 const rowJson = [
     {
-        name: "priya",
-        country: "paris",
+        name: "Priya",
+        country: "Paris",
         language: "French",
-        game: "chess",
-        medal: "gold"
+        game: "Chess",
+        medal: "Gold"
     },
     {
         name: "Harish",
         country: "India",
         language: "Tamil",
-        game: "parota potti",
-        medal: "gold"
+        game: "Cricket",
+        medal: "Gold"
     },
     {
-        name: "gowtham",
+        name: "Gowtham",
         country: "UK",
         language: "English",
         game: "Cricket",
-        medal: "gold"
-    },
-    {
-        name: "abdul",
-        country: "USA",
-        language: "English",
-        game: "Cricket",
-        medal: "gold"
+        medal: "Gold"
     }
 ]
-
 
 export { columnJson, rowJson }
