@@ -65,21 +65,26 @@ const rowJson = [
         country: "Paris",
         language: "French",
         game: "Chess",
-        medal: "Gold"
+        medal: "Gold",
+        flag:'fra'
     },
     {
         name: "Harish",
         country: "India",
         language: "Tamil",
         game: "Cricket",
-        medal: "Gold"
+        medal: "Gold",
+        flag:'ind'
+
     },
     {
         name: "Gowtham",
         country: "UK",
         language: "English",
         game: "Cricket",
-        medal: "Gold"
+        medal: "Gold",
+        flag:'gb'
+
     }
 ]
 

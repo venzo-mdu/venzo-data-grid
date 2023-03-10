@@ -131,7 +131,9 @@
 
 import React, { useEffect, useState } from 'react'
 import '../table/table.css'
+import Flags from 'react-world-flags'
 import { columnJson, rowJson } from '../../context/tableData'
+import Flag from 'react-world-flags';
 
 function Table() {
   const [columnData, setColumnData] = useState([]);
@@ -179,7 +181,7 @@ function Table() {
           <input type={'checkbox'} className='selectRow'></input>
           {columnData.map((col, index) => {
             return (
-              <div key={index}>{element[col.key]}</div>
+              <div key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
             )
           })}
         </div>
