@@ -170,21 +170,20 @@ function Table() {
       return options
     }
   }
+
   const renderTableData = (data) => {
     return data.map((element, i) => {
       return (
-        <div key={i} className="columnGrid">
-          <input checked={checked}  onChange={toggleCheck} type="checkbox"  className='selectRow'/>
-
+        <div key={i} className="columnGrid"  >
+          <input key={i}   type="checkbox" name='checkbox'  onClick={()=> toggle(i)} className='selectRow'/>
           {columnData.map((col, index) => {
             return (
-              <div key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
+              <div style={{backgroundColor: c}}  key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
             )
           })}
         </div>
       )
     })
-    
   }
 
   const [order, setOrder] = useState('asd');
@@ -210,30 +209,15 @@ function Table() {
   }
 
 
+const [c, setC] =useState ('')
 
-  const [ischecked, setIschecked] =useState(false)
-  const [checked, setChecked] =useState(false)
-
-  const toggle = () =>{
-    if(ischecked){
-      console.log(ischecked)
-      setIschecked(false)
-      setChecked(false)
-    }else{
-      console.log(ischecked)
-      setIschecked(true)
-      setChecked(true)
+  const toggle =(value) =>{
+    console.log(sorting[value])
+    if(rowData[value]){
+        setC('blue')
     }
+   
   }
-  const toggleCheck =() =>{
-    if(checked){
-      console.log(checked)
-      setChecked(false)
-    }else{
-      console.log(checked)
-      setChecked(true)
-    }
-    }
 
   useEffect(() => {
     setColumnData(columnJson)
@@ -244,7 +228,6 @@ function Table() {
   return (
     <>
       <div className='tableGrid'>
-
         <div>
           <label>filter</label>&nbsp;&nbsp;&nbsp;
           <select value={value} onChange={handleChange}>
@@ -257,10 +240,8 @@ function Table() {
             <option value=" ">   </option>
             {renderFilterOptions(value)}
           </select>
-
-
           <div className='columnGrid'>
-          <input checked={ischecked}  onChange={toggle} type="checkbox"/>
+          <input type="checkbox" name="Check_ctr" value="yes" />
               {columnData.map((item, index) => {
                 return (
                   <div key={index} style={{
@@ -278,15 +259,11 @@ function Table() {
         </div>
 
         <div className='rowGrid'>
-
           <div className='tableData'>
             {filteredData.length ? renderTableData(filteredData) : renderTableData(sorting)}
           </div>
-
         </div>
-
       </div>
-
     </>
   )
 }
