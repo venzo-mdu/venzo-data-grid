@@ -133,6 +133,7 @@ import React, { useEffect, useState } from 'react'
 import '../table/table.css'
 import { columnJson, rowJson } from '../../context/tableData'
 import Flag from 'react-world-flags';
+import { private_excludeVariablesFromRoot } from '@mui/material';
 
 function Table() {
   const [columnData, setColumnData] = useState([]);
@@ -173,11 +174,15 @@ function Table() {
 
   const renderTableData = (data) => {
     return data.map((element, i) => {
+      console.log(data)
+      // let parent = element.parentNode.parentNode
+      // parent.style.backgroundColor = 'blue'
       return (
         <div key={i} className="columnGrid"  >
-          <input key={i}   type="checkbox" name='checkbox'  onClick={()=> toggle(i)} className='selectRow'/>
+          <input key={i}   type="checkbox" name='checkbox'  onChange={(e)=> toggle(e,i)} className='selectRow'/>
           {columnData.map((col, index) => {
             return (
+
               <div style={{backgroundColor: c}}  key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
             )
           })}
@@ -211,11 +216,18 @@ function Table() {
 
 const [c, setC] =useState ('')
 
-  const toggle =(value) =>{
-    console.log(sorting[value])
-    if(rowData[value]){
-        setC('blue')
+  const toggle =(event,value) =>{
+    console.log(sorting[value],event.target)
+    let parent = event.target.parentNode
+    if(event.target.checked){
+      parent.style.backgroundColor = 'blue'
+    }else{
+    parent.style.backgroundColor = 'white'
     }
+    console.log(parent)
+    // if(rowData[value]){
+    //     setC('blue')
+    // }
    
   }
 
