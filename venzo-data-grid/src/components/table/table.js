@@ -131,7 +131,6 @@
 
 import React, { useEffect, useState } from 'react'
 import '../table/table.css'
-import Flags from 'react-world-flags'
 import { columnJson, rowJson } from '../../context/tableData'
 import Flag from 'react-world-flags';
 
@@ -139,26 +138,23 @@ function Table() {
   const [columnData, setColumnData] = useState([]);
   const [rowData, setRowData] = useState([]);
   const [sorting, setSorting] = useState([]);
-
   const [value, setValue] = useState('');
   const [filteredData, setFilteredData] = useState([]);
-  // const [selectopt, setSelectopt] =useState('')
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-
+  
   const filterOptionSelected = (e) => {
     let data = e.target.value
     if (data !== null) {
       let filterOption = value
       let filteredData = sorting.filter(element => element[filterOption] == data);
       setFilteredData(filteredData)
-      // setSelectopt(data)
     }
     else if (data === ' ') {
-      setFilteredData(sorting.map(element => element))
-      console.log(filteredData)
+      let filteredData =sorting.map(element => element)
+      setFilteredData(filteredData)
     }
   }
 
@@ -178,7 +174,8 @@ function Table() {
     return data.map((element, i) => {
       return (
         <div key={i} className="columnGrid">
-          <input type={'checkbox'} className='selectRow'></input>
+          <input checked={checked}  onChange={toggleCheck} type="checkbox"  className='selectRow'/>
+
           {columnData.map((col, index) => {
             return (
               <div key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
@@ -190,12 +187,6 @@ function Table() {
     
   }
 
-  // const getFilterData = () => {
-  //   if (filterOption.length > 0) {
-  //     return sorting.filter(data => data.filterOption.toLowerCase().includes(filterOption.toLowerCase()))
-  //   }
-  //   return sorting
-  // }
   const [order, setOrder] = useState('asd');
 
   const sortTable = (value, key) => {
@@ -218,6 +209,32 @@ function Table() {
 
   }
 
+
+
+  const [ischecked, setIschecked] =useState(false)
+  const [checked, setChecked] =useState(false)
+
+  const toggle = () =>{
+    if(ischecked){
+      console.log(ischecked)
+      setIschecked(false)
+      setChecked(false)
+    }else{
+      console.log(ischecked)
+      setIschecked(true)
+      setChecked(true)
+    }
+  }
+  const toggleCheck =() =>{
+    if(checked){
+      console.log(checked)
+      setChecked(false)
+    }else{
+      console.log(checked)
+      setChecked(true)
+    }
+    }
+
   useEffect(() => {
     setColumnData(columnJson)
     setRowData(rowJson)
@@ -231,22 +248,20 @@ function Table() {
         <div>
           <label>filter</label>&nbsp;&nbsp;&nbsp;
           <select value={value} onChange={handleChange}>
-            <option value=""></option>
-            <option value="name">name</option>
-            <option value="language">language</option>
-            <option value="game">game</option>
-            <option value="medal">madel</option>
+          <option value=" "> </option>
+          {columnData.map((item) => { 
+            return <option value={item.key}>{item.title}</option>
+          })}
           </select>
           <select onChange={filterOptionSelected}>
-            <option value=" ">  </option>
+            <option value=" ">   </option>
             {renderFilterOptions(value)}
           </select>
 
 
           <div className='columnGrid'>
-            <input type={'checkbox'} className='selectAll'></input>
-            {
-              columnData.map((item, index) => {
+          <input checked={ischecked}  onChange={toggle} type="checkbox"/>
+              {columnData.map((item, index) => {
                 return (
                   <div key={index} style={{
                     width: item.width,
