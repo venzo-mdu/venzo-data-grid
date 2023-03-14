@@ -1,0 +1,37 @@
+/* .tableGrid{
+    width: 65%;
+    border: 1px solid white;
+    margin: 5% 5%;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+} */
+
+/* .tableGrid {
+    padding: 20px 30px;
+} */
+.columnGrid{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0;
+   border-bottom: 1px solid black;
+}
+.columnGrid:last-child{
+    border-bottom: 0;
+}
+
+.tableData{
+    text-align: left;
+}
+.columnGrid {
+    display: flex;
+}
+.columnGrid div{
+    width: 20%;
+    margin:3% 0 2% 0;
+}
+.selectAll{
+    margin: 4% 0 0 0;
+}
+.selectRow{
+    margin: 4.5% 0 0 0;
+}
