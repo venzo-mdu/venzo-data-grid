@@ -133,7 +133,6 @@ import React, { useEffect, useState } from 'react'
 import '../table/table.css'
 import { columnJson, rowJson } from '../../context/tableData'
 import Flag from 'react-world-flags';
-import { private_excludeVariablesFromRoot } from '@mui/material';
 
 function Table() {
   const [columnData, setColumnData] = useState([]);
@@ -150,7 +149,7 @@ function Table() {
     let data = e.target.value
     if (data !== null) {
       let filterOption = value
-      let filteredData = sorting.filter(element => element[filterOption] == data);
+      let filteredData = sorting.filter(element => element[filterOption] === data);
       setFilteredData(filteredData)
     }
     else if (data === ' ') {
@@ -174,16 +173,14 @@ function Table() {
 
   const renderTableData = (data) => {
     return data.map((element, i) => {
-      console.log(data)
-      // let parent = element.parentNode.parentNode
-      // parent.style.backgroundColor = 'blue'
       return (
         <div key={i} className="columnGrid"  >
-          <input key={i}   type="checkbox" name='checkbox'  onChange={(e)=> toggle(e,i)} className='selectRow'/>
-          {columnData.map((col, index) => {
+         
+         <input key={i}   type="checkbox" name='checkbox'  onChange={(e)=> toggle(e,i)} className='selectRow'/>
+         {columnData.map((col, index) => {
             return (
 
-              <div style={{backgroundColor: c}}  key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
+              <div style={{ paddingTop:'20px', paddingLeft:'10px'}}  key={index}>{col.key==='country'?<Flag code={element.flag} height='16'/>:''} &nbsp;{element[col.key]}</div>
             )
           })}
         </div>
@@ -213,21 +210,14 @@ function Table() {
 
   }
 
-
-const [c, setC] =useState ('')
-
   const toggle =(event,value) =>{
     console.log(sorting[value],event.target)
     let parent = event.target.parentNode
     if(event.target.checked){
-      parent.style.backgroundColor = 'blue'
+      parent.style.backgroundColor = "#24a0ed"
     }else{
     parent.style.backgroundColor = 'white'
     }
-    console.log(parent)
-    // if(rowData[value]){
-    //     setC('blue')
-    // }
    
   }
 
@@ -253,7 +243,7 @@ const [c, setC] =useState ('')
             {renderFilterOptions(value)}
           </select>
           <div className='columnGrid'>
-          <input type="checkbox" name="Check_ctr" value="yes" />
+            <input style={{marginTop:"10px", marginRight:"5px"}} type="checkbox" name="Check_ctr" value="yes" />
               {columnData.map((item, index) => {
                 return (
                   <div key={index} style={{
