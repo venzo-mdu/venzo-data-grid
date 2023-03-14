@@ -61,6 +61,7 @@ const columnJson =
 
 const rowJson = [
     {
+        id:1,
         name: "Priya",
         country: "Paris",
         language: "French",
@@ -69,6 +70,7 @@ const rowJson = [
         flag:'fra'
     },
     {
+        id:2,
         name: "Harish",
         country: "India",
         language: "Tamil",
@@ -78,6 +80,8 @@ const rowJson = [
 
     },
     {
+
+        id:3,
         name: "Gowtham",
         country: "UK",
         language: "English",
