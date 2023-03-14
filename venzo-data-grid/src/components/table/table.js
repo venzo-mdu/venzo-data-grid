@@ -226,10 +226,10 @@ function Table() {
     for (var i = 0; i < ele.length; i++) {
       if (e.target.checked) {
         ele[i].checked = true;
-        data[i].style.backgroundColor ='blue'
+        data[i].style.backgroundColor = 'blue'
       } else {
         ele[i].checked = false;
-        data[i].style.backgroundColor ='white'
+        data[i].style.backgroundColor = 'white'
       }
     }
   }
@@ -264,7 +264,9 @@ function Table() {
             {renderFilterOptions(value)}
           </select>
           <div className='columnGrid'>
-            <input className='selectAll' onClick={(e) => selects(e)} type="checkbox" name="Check_ctr" value="yes" />
+            <span>
+              <input style={{ marginTop: '35px', marginRight: '10px' }} className='selectAll' onClick={(e) => selects(e)} type="checkbox" name="Check_ctr" value="yes" />
+            </span>
             {columnData.map((item, index) => {
               return (
                 <div key={index} style={{
