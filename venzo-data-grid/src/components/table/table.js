@@ -220,6 +220,16 @@ function Table() {
     }
    
   }
+  function selects(e){  
+    var ele=document.getElementsByName('checkbox');  
+    for(var i=0; i<ele.length; i++){  
+        if(e.target.checked) {
+          ele[i].checked=true;  
+        } else{
+          ele[i].checked=false;
+        }
+    }  
+}  
 
   useEffect(() => {
     setColumnData(columnJson)
@@ -243,7 +253,7 @@ function Table() {
             {renderFilterOptions(value)}
           </select>
           <div className='columnGrid'>
-            <input style={{marginTop:"10px", marginRight:"5px"}} type="checkbox" name="Check_ctr" value="yes" />
+            <input style={{marginTop:"10px", marginRight:"5px"}} onClick={(e) => selects(e)} type="checkbox" name="Check_ctr" value="yes" />
               {columnData.map((item, index) => {
                 return (
                   <div key={index} style={{
