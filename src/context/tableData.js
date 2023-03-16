@@ -67,7 +67,9 @@ const rowJson = [
         language: "French",
         game: "Chess",
         medal: "Gold",
-        flag:'fra'
+        flag:'fra',
+        checked:false
+
     },
     {
         id:2,
@@ -76,7 +78,8 @@ const rowJson = [
         language: "Tamil",
         game: "Cricket",
         medal: "Gold",
-        flag:'ind'
+        flag:'ind',
+        checked:false
 
     },
     {
@@ -87,7 +90,8 @@ const rowJson = [
         language: "English",
         game: "Cricket",
         medal: "Gold",
-        flag:'gb'
+        flag:'gb',
+        checked:false
 
     }
 ]

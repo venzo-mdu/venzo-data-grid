@@ -137,9 +137,10 @@ function Table() {
   const [columnData, setColumnData] = useState([]);
   const [rowData, setRowData] = useState([]);
   const [table, setTable] = useState([]);
-  const [sorting, setSorting] = useState([]);
   const [value, setValue] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const [sorting, setSorting] = useState([]);
+  const [order, setOrder] = useState('asd');
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -175,20 +176,28 @@ function Table() {
     return data.map((element, i) => {
       return (
         <div key={i} name='colordata' className="columnGrid" >
-
-          <input key={i} type="checkbox" name='checkbox' onChange={(e) => toggle(e, i)} className='selectRow' />
+          <input
+            type="checkbox"
+            checked={element.checked}
+            onChange={(e) => checkOne(element.id, element)}
+          />
           {columnData.map((col, index) => {
-            return (
-
-              <div style={{ paddingTop: '20px', paddingLeft: '10px' }} key={index}>{col.key === 'country' ? <Flag code={element.flag} height='16' /> : ''} &nbsp;{element[col.key]}</div>
-            )
+            return (<div style={{ paddingTop: '20px', paddingLeft: '10px' }} key={index}>{col.key === 'country' ? <Flag code={element.flag} height='16' /> : ''} &nbsp;{element[col.key]}</div>)
           })}
         </div>
       )
     })
   }
 
-  const [order, setOrder] = useState('asd');
+  const checkOne = (id, ele) => {
+      const tempData = sorting.map(element => {
+        if (element.id === id) {
+          return( { ...element, checked: !element.checked } );
+        }
+        return element;
+      });
+      setSorting(tempData);
+  };
 
   const sortTable = (value, key) => {
     if (key === "true") {
@@ -210,35 +219,35 @@ function Table() {
 
   }
 
-  const toggle = (event, value) => {
-    console.log(sorting[value], event.target)
-    let parent = event.target.parentNode
-    if (event.target.checked) {
-      parent.style.backgroundColor = "#24a0ed"
-    } else {
-      parent.style.backgroundColor = 'white'
-    }
+  // const toggle = (event, value) => {
+  //   console.log(appData[value], event.target)
+  //   let parent = event.target.parentNode
+  //   if (event.target.checked) {
+  //     parent.style.backgroundColor = "#24a0ed"
+  //   } else {
+  //     parent.style.backgroundColor = 'white'
+  //   }
+  // }
 
-  }
-  function selects(e) {
-    let data = document.getElementsByName('colordata');
-    var ele = document.getElementsByName('checkbox');
-    for (var i = 0; i < ele.length; i++) {
-      if (e.target.checked) {
-        ele[i].checked = true;
-        data[i].style.backgroundColor = '#24a0ed'
-      } else {
-        ele[i].checked = false;
-        data[i].style.backgroundColor = 'white'
-      }
+  const selectAll = () => {
+    if (val === false) {
+      const tempData = sorting.map(element => ({ ...element, checked: true }));
+      setSorting(tempData);
+      setVal(true)
+    } else {
+      const tempData = sorting.map(element => ({ ...element, checked: false }));
+      setSorting(tempData);
+      setVal(false)
     }
   }
+  const [val, setVal] = useState(false)
+
 
   useEffect(() => {
     setColumnData(columnJson)
     setRowData(rowJson)
-    setSorting(rowJson)
     setTable(tableJson)
+    setSorting(rowJson)
   }, [])
 
   return (
@@ -264,7 +273,16 @@ function Table() {
             {renderFilterOptions(value)}
           </select>
           <div className='columnGrid'>
-              <input className='selectAll' onClick={(e) => selects(e)} type="checkbox" name="Check_ctr" value="yes" />
+            <input
+              style={{ marginRight: '10px' }}
+              className='selectAll'
+              type="checkbox"
+              checked={val}
+              onChange={selectAll}
+              name="Check_ctr"
+              value="yes"
+            />
+
             {columnData.map((item, index) => {
               return (
                 <div key={index} style={{
